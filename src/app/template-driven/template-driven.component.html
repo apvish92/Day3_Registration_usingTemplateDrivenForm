@@ -1,0 +1,90 @@
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Registration Form</h3>
+              <form name="form" (ngSubmit)='submit(form)' #form="ngForm">
+                  <div class="form-group">
+                      <label for="firstName">First Name</label>
+                      <input [style.border-left]="name.invalid?'3px solid red':'3px solid green'" type="text" class="form-control" name="firstName" required [(ngModel)]="model.firstName" #name="ngModel" maxlength="12"/>
+                      <div [hidden]="name.valid || name.pristine"
+                             class="alert alert-danger">
+                          First Name is required
+                        </div>
+                        <div [hidden]="!name.errors?.maxlength || name.pristine"
+                             class="alert alert-danger">
+                          Enter Maximum 12 characters only!
+                        </div>  
+                  </div>
+                  <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input [style.border-left]="lastName.invalid?'3px solid red':'3px solid green'" type="text" class="form-control" name="lastName" required [(ngModel)]="model.lastName" #lastName="ngModel" maxlength="12"/>
+                      <div [hidden]="name.valid || name.pristine"
+                             class="alert alert-danger">
+                          Last Name is required
+                        </div>
+                        <div [hidden]="!lastName.errors?.maxlength || lastName.pristine"
+                        class="alert alert-danger">
+                     Enter Maximum 12 characters only!
+                   </div> 
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Email</label>
+                      <input [style.border-left]="email.invalid?'3px solid red':'3px solid green'" type="text" class="form-control" name="email" required [(ngModel)]="model.email" #email="ngModel" pattern='(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))'/>
+                      <div [hidden]="email.valid || email.pristine"
+                             class="alert alert-danger">
+                          Wrong email
+
+                        </div> 
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input [style.border-left]="city.invalid?'3px solid red':'3px solid green'" type="city" class="form-control" name="city" required [(ngModel)]="model.city" #city="ngModel"/>
+                    <div [hidden]="city.valid || city.pristine"
+                             class="alert alert-danger">
+                          City Name is required
+                        </div>
+                </div>
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input [style.border-left]="state.invalid?'3px solid red':'3px solid green'" type="state" class="form-control" name="state" required [(ngModel)]="model.state" #state="ngModel"/>
+                  <div [hidden]="state.valid || state.pristine"
+                             class="alert alert-danger">
+                          State Name is required
+                        </div>
+                </div>
+              <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input [style.border-left]="pincode.invalid?'3px solid red':'3px solid green'" type="pincode" class="form-control" name="pincode" required [(ngModel)]="model.pincode" #pincode="ngModel" />
+                <div [hidden]="pincode.valid || pincode.pristine"
+                             class="alert alert-danger">
+                          Pincode is required
+                        </div>
+              </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input [style.border-left]="pass.invalid?'3px solid red':'3px solid green'" type="password" class="form-control" name="password"  required placeholder="Enter password" #pass="ngModel" [(ngModel)]="model.password" minlength="8" maxlength="12"/>
+                      <div [hidden]="pass.valid || pass.pristine"
+                        class="alert alert-danger">
+                     Password is required
+                     <p [hidden]="!pass.errors?.minlength">Small</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="cpassword">Confirm Password</label>
+                    <input [style.border-left]="cpass.invalid?'3px solid red':'3px solid green'" type="cpassword" class="form-control" name="cpassword"  required placeholder="Re-enter password" #cpass="ngModel" [(ngModel)]="model.cpassword" minlength="8" maxlength="12"/>
+                    <div [hidden]="model.password==model.cpassword"
+                        class="alert alert-danger">
+                     Passwords dont match
+                    </div>
+                     
+                  </div>
+                  <div class="form-group">
+                      <button class="btn btn-primary" [disabled]="!form.valid" (click)="submit()">Register</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
